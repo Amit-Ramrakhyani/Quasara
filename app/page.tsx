@@ -75,16 +75,16 @@ export default function LandingPage() {
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 text-white">Creator Success Stories</h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                { quote: "Quasara&apos;s AI insights helped me grow my audience by 500% in just 3 months!", author: "Alex K., Tech Influencer" },
-                { quote: "I landed a 6-figure brand deal through Quasara&apos;s networking feature. Game-changer!", author: "Samantha R., Fashion Blogger" },
-                { quote: "The content generation tool saves me hours every week. My engagement has never been higher!", author: "Marcus T., Travel Vlogger" },
-              ].map((testimonial, index) => (
-                <div key={index} className="flex flex-col items-center space-y-2 p-6 bg-white rounded-xl shadow-md">
-                  <p className="text-sm text-[#2D3748] italic">&quot;{testimonial.quote}&quot;</p>
-                  <p className="font-semibold text-[#6C63FF]">- {testimonial.author}</p>
-                </div>
-              ))}
+            {[
+              { quote: "Quasara&apos;s AI insights helped me grow my audience by 500% in just 3 months!", author: "Alex K., Tech Influencer" },
+              { quote: "I landed a 6-figure brand deal through Quasara&apos;s networking feature. Game-changer!", author: "Samantha R., Fashion Blogger" },
+              { quote: "The content generation tool saves me hours every week. My engagement has never been higher!", author: "Marcus T., Travel Vlogger" },
+            ].map((testimonial, index) => (
+              <div key={index} className="flex flex-col items-center space-y-2 p-6 bg-white rounded-xl shadow-md">
+                <p className="text-sm text-[#2D3748] italic">&quot;{testimonial.quote}&quot;</p>
+                <p className="font-semibold text-[#6C63FF]">- {testimonial.author}</p>
+              </div>
+            ))}
             </div>
           </div>
         </section>
