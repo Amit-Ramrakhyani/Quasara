@@ -4,6 +4,11 @@ import { Input } from "@/components/ui/input"
 import { ArrowRight, BarChart2, Calendar, MessageSquare, Users, Zap, ChevronRight } from 'lucide-react'
 
 export default function LandingPage() {
+  const testimonials = [
+    { quote: "Quasara's AI insights helped me grow my audience by 500% in just 3 months!", author: "Alex K., Tech Influencer" },
+    { quote: "I landed a 6-figure brand deal through Quasara's networking feature. Game-changer!", author: "Samantha R., Fashion Blogger" },
+    { quote: "The content generation tool saves me hours every week. My engagement has never been higher!", author: "Marcus T., Travel Vlogger" },
+  ];
   return (
     <div className="flex flex-col min-h-screen bg-[#F9F9F9] text-[#2D3748]">
       <header className="px-4 lg:px-6 h-16 flex items-center bg-white shadow-sm">
@@ -72,22 +77,18 @@ export default function LandingPage() {
           </div>
         </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-[#FF6584]">
-          <div className="container px-4 md:px-6">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 text-white">Creator Success Stories</h2>
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                { quote: "Quasara's AI insights helped me grow my audience by 500% in just 3 months!", author: "Alex K., Tech Influencer" },
-                { quote: "I landed a 6-figure brand deal through Quasara's networking feature. Game-changer!", author: "Samantha R., Fashion Blogger" },
-                { quote: "The content generation tool saves me hours every week. My engagement has never been higher!", author: "Marcus T., Travel Vlogger" },
-              ].map((testimonial, index) => (
-                <div key={index} className="flex flex-col items-center space-y-2 p-6 bg-white rounded-xl shadow-md">
-                  <p className="text-sm text-[#2D3748] italic">&#34;{testimonial.quote}&#34;</p>
-                  <p className="font-semibold text-[#6C63FF]">- {testimonial.author}</p>
-                </div>
-              ))}
-            </div>
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 text-white">Creator Success Stories</h2>
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="flex flex-col items-center space-y-2 p-6 bg-white rounded-xl shadow-md">
+                <p className="text-sm text-[#2D3748] italic">{`"${testimonial.quote}"`}</p>
+                <p className="font-semibold text-[#6C63FF]">- {testimonial.author}</p>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
         <section className="w-full py-12 md:py-24 lg:py-32 bg-[#6C63FF]">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
