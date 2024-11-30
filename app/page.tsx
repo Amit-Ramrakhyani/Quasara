@@ -9,7 +9,7 @@ export default function LandingPage() {
       <header className="px-4 lg:px-6 h-16 flex items-center bg-white shadow-sm">
         <Link className="flex items-center justify-center" href="#">
           <Zap className="h-6 w-6 text-[#6C63FF]" />
-          <span className="ml-2 text-xl font-bold text-[#2D3748]">CreatorHub</span>
+          <span className="ml-2 text-xl font-bold text-[#2D3748]">Quasara</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           {["Features", "Pricing", "About", "Contact"].map((item) => (
@@ -76,12 +76,12 @@ export default function LandingPage() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 text-white">Creator Success Stories</h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                { quote: "CreatorHub's AI insights helped me grow my audience by 500% in just 3 months!", author: "Alex K., Tech Influencer" },
-                { quote: "I landed a 6-figure brand deal through CreatorHub's networking feature. Game-changer!", author: "Samantha R., Fashion Blogger" },
+                { quote: "Quasara&apos;s AI insights helped me grow my audience by 500% in just 3 months!", author: "Alex K., Tech Influencer" },
+                { quote: "I landed a 6-figure brand deal through Quasara&apos;s networking feature. Game-changer!", author: "Samantha R., Fashion Blogger" },
                 { quote: "The content generation tool saves me hours every week. My engagement has never been higher!", author: "Marcus T., Travel Vlogger" },
               ].map((testimonial, index) => (
                 <div key={index} className="flex flex-col items-center space-y-2 p-6 bg-white rounded-xl shadow-md">
-                  <p className="text-sm text-[#2D3748] italic">"{testimonial.quote}"</p>
+                  <p className="text-sm text-[#2D3748] italic">&quot;{testimonial.quote}&quot;</p>
                   <p className="font-semibold text-[#6C63FF]">- {testimonial.author}</p>
                 </div>
               ))}
@@ -96,7 +96,7 @@ export default function LandingPage() {
                   Ready to Revolutionize Your Content Creation?
                 </h2>
                 <p className="mx-auto max-w-[600px] text-gray-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join thousands of creators who are scaling their business with CreatorHub.
+                  Join thousands of creators who are scaling their business with Quasara.
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
@@ -115,7 +115,7 @@ export default function LandingPage() {
             <div className="grid gap-10 lg:grid-cols-2">
               <div className="flex flex-col justify-center space-y-4">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-[#6C63FF]">
-                  Why Choose CreatorHub?
+                  Why Choose Quasara?
                 </h2>
                 <p className="max-w-[600px] text-gray-600 md:text-xl/relaxed">
                   We empower creators with cutting-edge AI technology, robust analytics, and unparalleled networking opportunities. Our platform is designed to help you create better content, grow your audience, and maximize your earnings.
@@ -203,7 +203,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="mt-8 border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-sm">© 2024 CreatorHub. All rights reserved.</p>
+            <p className="text-sm">© 2024 Quasara. All rights reserved.</p>
             <div className="flex space-x-4 mt-4 sm:mt-0">
               {["Twitter", "Facebook", "Instagram", "LinkedIn"].map((social) => (
                 <Link key={social} href="#" className="text-sm hover:text-[#32E0C4] transition-colors">
