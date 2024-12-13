@@ -6,8 +6,12 @@ if (!MONGO_URI) {
   throw new Error("Please define the MONGO_URI environment variable in .env.local");
 }
 
-// Initialize the cached object safely
-let cached = global.mongoose as { conn: mongoose.Connection | null, promise: Promise<typeof mongoose> | null } | undefined;
+// Ensure global.mongoose is correctly typed and initialized.
+declare global {
+  var mongoose: { conn: mongoose.Connection | null, promise: Promise<typeof mongoose> | null } | undefined;
+}
+
+let cached = global.mongoose;
 
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
