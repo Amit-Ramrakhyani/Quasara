@@ -4,11 +4,10 @@ if (!process.env.MONGO_URI) {
   throw new Error("Please define the MONGO_URI environment variable");
 }
 
-// Assert that MONGO_URI is a string
 const MONGO_URI: string = process.env.MONGO_URI as string;
 
 type MongooseCache = {
-  conn: mongoose.Connection | null;
+  conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
 };
 
@@ -22,7 +21,7 @@ if (!global.mongoose) {
   global.mongoose = cached;
 }
 
-async function dbConnect() {
+async function dbConnect(): Promise<typeof mongoose> {
   if (cached.conn) {
     return cached.conn;
   }
@@ -37,12 +36,11 @@ async function dbConnect() {
 
   try {
     cached.conn = await cached.promise;
+    return cached.conn;
   } catch (e) {
     cached.promise = null;
     throw e;
   }
-
-  return cached.conn;
 }
 
 export default dbConnect;
