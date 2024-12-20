@@ -8,7 +8,7 @@ if (!MONGO_URI) {
 
 // Ensure global.mongoose is correctly typed and initialized.
 declare global {
-  var mongoose: { conn: mongoose.Connection | null, promise: Promise<typeof mongoose> | null } | undefined;
+  var mongoose: { conn: mongoose.Connection | null; promise: Promise<typeof mongoose> | null } | undefined;
 }
 
 let cached = global.mongoose;
@@ -18,12 +18,16 @@ if (!cached) {
 }
 
 async function dbConnect() {
-  if (cached.conn) {
+  if (cached && cached.conn) {
     return cached.conn;
   }
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(MONGO_URI, { bufferCommands: false }).then((mongoose) => mongoose);
+  }
+
+  if (!cached) {
+    throw new Error("Global mongoose cache not initialized");
   }
 
   cached.conn = await cached.promise;
