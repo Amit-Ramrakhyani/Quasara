@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI;
-
-if (!MONGO_URI) {
+if (!process.env.MONGO_URI) {
   throw new Error("Please define the MONGO_URI environment variable");
 }
+
+// Assert that MONGO_URI is a string
+const MONGO_URI: string = process.env.MONGO_URI as string;
 
 type MongooseCache = {
   conn: mongoose.Connection | null;
