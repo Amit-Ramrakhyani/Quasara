@@ -8,7 +8,7 @@ import { ArrowRight, Zap } from "lucide-react";
 
 export default function LandingPage() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const launchDate = new Date("2025-01-01T00:00:00"); 
+  const launchDate = new Date("2025-04-08T00:00:00"); 
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<{ success: boolean; message: string } | null>(null);
 
