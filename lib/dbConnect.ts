@@ -1,39 +1,44 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = process.env.MONGO_URI; // Ensure this is set in .env.local
+const MONGO_URI = process.env.MONGO_URI;
 
 if (!MONGO_URI) {
-  throw new Error("Please define the MONGO_URI environment variable in .env.local");
+  throw new Error("Please define the MONGO_URI environment variable");
 }
 
-// Define a global interface for mongoose cache
-interface MongooseCache {
-  conn: mongoose.Connection | null;
-  promise: Promise<typeof mongoose> | null;
-}
-
-// Ensure global.mongoose is correctly typed
 declare global {
-  var mongoose: MongooseCache | undefined;
+  var mongoose: {
+    conn: mongoose.Connection | null;
+    promise: Promise<typeof mongoose> | null;
+  } | undefined;
 }
 
-// Initialize the cache if it doesn't exist
-let cached: MongooseCache = global.mongoose || { conn: null, promise: null };
-global.mongoose = cached;
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
 
 async function dbConnect() {
-  // Use the cached connection if it exists
   if (cached.conn) {
     return cached.conn;
   }
 
-  // If no promise exists, create a new connection promise
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGO_URI, { bufferCommands: false }).then((mongoose) => mongoose);
+    const opts = {
+      bufferCommands: false,
+    };
+
+    cached.promise = mongoose.connect(MONGO_URI, opts);
   }
 
-  // Wait for the promise to resolve and store the connection
-  cached.conn = await cached.promise;
+  try {
+    cached.conn = await cached.promise;
+  } catch (e) {
+    cached.promise = null;
+    throw e;
+  }
+
   return cached.conn;
 }
 
